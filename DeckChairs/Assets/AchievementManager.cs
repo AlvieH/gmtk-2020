@@ -40,7 +40,7 @@ public class AchievementManager : MonoBehaviour
     {
         Debug.Log($"[AchievementManager] Celebrating achievement {achievement.title}");
         //int cardsOnScreen = GameObject.FindObjectsOfType<AchievementCard>().Length;
-        var instance = Instantiate(AchievementCard, GameObject.FindObjectOfType<Canvas>().transform);
+        var instance = Instantiate(AchievementCard, transform);
         //instance.transform.SetParent();
         //var position = instance.transform.position;
         //position.y = cardsOnScreen * instance.GetComponent<RectTransform>().sizeDelta.y;

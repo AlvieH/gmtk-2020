@@ -45,7 +45,7 @@ public class WorldManager : MonoBehaviour
     void ResetChairs()
     {
         //Debug.Log("[WorldManager] destroying chairs!");
-        GameObject.FindGameObjectsWithTag("chair").ToList().ForEach(c => Destroy(c.gameObject));
+        GameObject.FindGameObjectsWithTag("Chair").ToList().ForEach(c => Destroy(c.gameObject));
     }
 
     // Update is called once per frame

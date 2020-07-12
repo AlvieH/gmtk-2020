@@ -7,7 +7,7 @@ public class ChairCountAchievement : Achievement
     public int chairCount;
     public override bool IsCompleted()
     {
-        return GameObject.FindGameObjectsWithTag("chair").Length >= chairCount;
+        return FindObjectsOfType<Draggable>().Length >= chairCount;
     }
 
     //public override string Description => {}
