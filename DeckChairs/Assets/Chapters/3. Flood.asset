@@ -18,3 +18,4 @@ MonoBehaviour:
     the deck chairs, they\u2019re spectacular.\r"
   AnnouncementVoiceover: {fileID: 8300000, guid: 31923c132393f6040ae4d02b44fb87a4,
     type: 3}
+  Icon: {fileID: 21300000, guid: 54416a041af2ca34e8423393c9ef3010, type: 3}

@@ -17,18 +17,7 @@ public class WorldManager : MonoBehaviour
     [Min(0)]
     public float TotalSeconds;
     public float ElapsedSeconds;
-
-    //[SerializeField]
-    //InteractionMode interactionMode;
     public InteractionMode InteractionMode;
-    //{
-    //    get => interactionMode;
-    //    set
-    //    {
-    //        interactionMode = value;
-    //        UpdateCursor();
-    //    }
-    //}
 
     private void Awake()
     {

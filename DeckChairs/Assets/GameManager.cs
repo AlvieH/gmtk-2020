@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     [SerializeField]
     GameState gameState;
-    public GameState GameState {
+    public GameState GameState
+    {
         get => gameState;
         private set => gameState = value;
     }
@@ -24,10 +25,14 @@ public class GameManager : MonoBehaviour
     public GameObject InGameContainer;
     public GameObject PostGameConatiner;
 
+    public AudioSource MusicAudioSource;
+    public AudioSource EffectsAudioSource;
+    public float MusicFadeDuration;
+
     GameObject[] AllContainers => new GameObject[] {
-        PreGameContainer, 
-        InGameContainer, 
-        PostGameConatiner 
+        PreGameContainer,
+        InGameContainer,
+        PostGameConatiner
     };
 
     void HideAllContainers() => AllContainers.ToList().ForEach(x => x.SetActive(false));
@@ -63,19 +68,44 @@ public class GameManager : MonoBehaviour
 
     public void PlayClip(AudioClip clip)
     {
-        GetComponent<AudioSource>().PlayOneShot(clip);
+        EffectsAudioSource.PlayOneShot(clip);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         TransitionToPreGame();
+        MusicAudioSource.Play();
         //TransitionToInGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void FadeOutMusic()
+    {
+        StartCoroutine(FadeMusic(MusicFadeDuration, 0));
+    }
+
+    public void FadeInMusic()
+    {
+        StartCoroutine(FadeMusic(MusicFadeDuration, 1));
+    }
+
+    IEnumerator FadeMusic(float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = MusicAudioSource.volume;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            MusicAudioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
     }
 }

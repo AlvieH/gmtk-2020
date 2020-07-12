@@ -18,3 +18,4 @@ MonoBehaviour:
     in the meantime the deck chairs are looking AMAZING. Alright.\r\n"
   AnnouncementVoiceover: {fileID: 8300000, guid: eda8fc467904ae8459fa52abd7c175de,
     type: 3}
+  Icon: {fileID: 21300000, guid: ca9026fed445e49458b24ee19dd15e50, type: 3}

@@ -1,10 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Timeline : MonoBehaviour
 {
     public GameObject Ship;
+    public GameObject TimelineEvents;
+    public GameObject TimelineEvent;
+    public Chapter[] Chapters;
 
     float timelineWidth;
     float shipWidth;
@@ -15,6 +17,22 @@ public class Timeline : MonoBehaviour
     {
         timelineWidth = transform.GetComponent<RectTransform>().sizeDelta.x;
         shipWidth = Ship.GetComponent<RectTransform>().sizeDelta.x;
+    }
+
+    [ContextMenu("Create timeline events")]
+    void CreateTimelineEvents()
+    {
+        // Remove any timeline events
+        int children = TimelineEvents.transform.childCount;
+        for (int i = children - 1; i >= 0; i--)
+        {
+            DestroyImmediate(TimelineEvents.transform.GetChild(i).gameObject);
+        }
+        foreach (var chapter in Chapters)
+        {
+            var instance = Instantiate(TimelineEvent, TimelineEvents.transform);
+            instance.GetComponent<Image>().sprite = chapter.Icon;
+        }
     }
 
     // Update is called once per frame
