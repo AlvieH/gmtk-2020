@@ -2,13 +2,13 @@
 using System.Linq;
 
 [CreateAssetMenu(menuName = "Achievements/Chair Move")]
-public class ChairMoveAchievement: Achievement
+public class ChairMoveAchievement : Achievement
 {
     [Min(0)]
     public int chairCount;
     public override bool IsCompleted()
     {
-        return chairCount >= AchievementManager.instance.ChairsMovedCount;
+        return AchievementManager.instance.ChairsMovedCount >= chairCount;
     }
 
     //public override string Description => {}

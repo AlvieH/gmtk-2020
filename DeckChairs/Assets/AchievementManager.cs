@@ -16,6 +16,7 @@ public class AchievementManager : MonoBehaviour
 
     public int ChairsMovedCount;
     public int ChairsRotatedCount;
+    public int ChairsPaintedCount;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class AchievementManager : MonoBehaviour
         ChairColorsInUse.Clear();
         ChairsMovedCount = 0;
         ChairsRotatedCount = 0;
+        ChairsPaintedCount = 0;
     }
 
     private void Update()

@@ -10,5 +10,6 @@ public class ChairCountAchievement : Achievement
         return GameObject.FindGameObjectsWithTag("Chair").Length >= chairCount;
     }
 
-    //public override string Description => {}
+    //[HideInInspector]
+    //public new string description => $"Build {chairCount} chairs";
 }

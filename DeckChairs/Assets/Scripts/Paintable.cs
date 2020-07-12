@@ -31,6 +31,10 @@ public class Paintable : MonoBehaviour
         {
             var currentColor = renderer.material.GetColor(colorName);
             var selectedColor = colorManager.GetPaintColor();
+            if (!HasBeenPainted)
+            {
+                AchievementManager.instance.ChairsPaintedCount += 1;
+            }
             HasBeenPainted = true;
             if (currentColor != selectedColor)
             {

@@ -7,7 +7,7 @@ public class ChairRotateAchievement : Achievement
     public int chairCount;
     public override bool IsCompleted()
     {
-        return chairCount >= AchievementManager.instance.ChairsRotatedCount;
+        return AchievementManager.instance.ChairsRotatedCount >= chairCount;
     }
 
     //public override string Description => {}

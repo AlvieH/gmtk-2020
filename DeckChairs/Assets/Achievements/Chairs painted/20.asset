@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a2d9a2e70b5a4348b6a9a2ee89cb937, type: 3}
-  m_Name: 10 Chairs
+  m_Script: {fileID: 11500000, guid: 8b724b40a116e1f4e8f184e205d37dd6, type: 3}
+  m_Name: 20
   m_EditorClassIdentifier: 
-  title: 1010100
-  description: Build 10 chairs
-  chairCount: 10
+  title: Gustav Klimt
+  description: Color 20 chairs
+  chairCount: 20

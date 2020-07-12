@@ -21,6 +21,8 @@ public class Draggable : MonoBehaviour
     private int chairLayer;
     Vector3 distance;
 
+    private bool hasBeenMoved = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,11 @@ public class Draggable : MonoBehaviour
     {
         if (colorManager.PaintModeEnabled()) return;
 
-        AchievementManager.instance.ChairsMovedCount += 1;
+        if (!hasBeenMoved)
+        {
+            AchievementManager.instance.ChairsMovedCount += 1;
+            hasBeenMoved = true;
+        }
 
         GameManager.instance.IsPickingObject = true;
 

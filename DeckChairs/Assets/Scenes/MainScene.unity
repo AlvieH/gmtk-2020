@@ -644,6 +644,7 @@ MonoBehaviour:
   EarnedAchievements: []
   ChairsMovedCount: 0
   ChairsRotatedCount: 0
+  ChairsPaintedCount: 0
 --- !u!1 &181310574
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,12 +971,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Colors:
-  - {r: 1, g: 0.6537612, b: 0, a: 1}
+  - {r: 0.6886792, g: 0.19815768, b: 0.19815768, a: 1}
   - {r: 0, g: 0.26026773, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 0.7724957, g: 0.8113208, b: 0.049750824, a: 1}
-  - {r: 0.3031433, g: 0.7264151, b: 0.29810432, a: 1}
-  - {r: 0.8301887, g: 0.27020293, b: 0.8126205, a: 1}
+  - {r: 0.71893364, g: 0.754717, b: 0.06051977, a: 1}
+  - {r: 0.49056602, g: 0.42420694, b: 0.33552864, a: 1}
+  - {r: 0.8207547, g: 0.42973477, b: 0.80708265, a: 1}
   BrushTip: {fileID: 1090002236}
   BackgroundBorder: {fileID: 103863154}
   Circles: {fileID: 126429341}
@@ -3219,7 +3220,7 @@ MonoBehaviour:
   - 'Deck chairman of the board '
   - 'Executive deck chairperson '
   - Pope of deck chairs
-  AchievementsPerPromotion: 3
+  AchievementsPerPromotion: 4
   PromotionSound: {fileID: 8300000, guid: 6573433b6cbdae34cb66b48d42d042a1, type: 3}
 --- !u!1 &1365791806
 GameObject:
@@ -4137,7 +4138,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4233,7 +4234,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

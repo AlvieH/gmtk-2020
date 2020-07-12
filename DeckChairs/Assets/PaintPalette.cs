@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PaintPalette : MonoBehaviour
 {
     public Color[] Colors;
