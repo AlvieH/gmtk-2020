@@ -16,6 +16,6 @@ MonoBehaviour:
   AnnouncementText: "Hi all, Captain here. So the basement is completely flooded,
     and the ship is going down. On your way to the lifeboats, be sure to check out
     the deck chairs, they\u2019re spectacular.\r"
-  AnnouncementVoiceover: {fileID: 8300000, guid: 31923c132393f6040ae4d02b44fb87a4,
+  AnnouncementVoiceover: {fileID: 8300000, guid: 2b1df866b06252840bb5d7f1d96fb605,
     type: 3}
   Icon: {fileID: 21300000, guid: 54416a041af2ca34e8423393c9ef3010, type: 3}
