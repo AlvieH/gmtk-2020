@@ -19,6 +19,7 @@ public class Draggable : MonoBehaviour
     private Vector3 offset;
     private Vector3 previousLocation;
     private int chairLayer;
+    Vector3 distance;
 
     // Start is called before the first frame update
     void Start()
@@ -31,52 +32,16 @@ public class Draggable : MonoBehaviour
         rigidbody.centerOfMass = centerOfMass;
     }
 
-    /// <summary>
-    /// OnMouseDown is called when the user has pressed the mouse button while
-    /// over the GUIElement or Collider.
-    /// </summary>
     void OnMouseDown()
-    {   
-        // Mouse control for movement disabled if paint mode is enabled
-        if (colorManager.PaintModeEnabled()) { return; }
-
-        screenPoint = Camera.main.WorldToScreenPoint(transform.position);
-        offset = transform.position - Camera.main.ScreenToWorldPoint(
-            new Vector3(Input.mousePosition.x, clickHeight + transform.position.y, screenPoint.z));
+    {
+        distance = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(transform.position).z)) - transform.position;
     }
-
-    /// <summary>
-    /// OnMouseDrag is called when the user has clicked on a GUIElement or Collider
-    /// and is still holding down the mouse.
-    /// </summary>
+ 
     void OnMouseDrag()
     {
-        // Mouse control for movement disabled if paint mode is enabled
-        if (colorManager.PaintModeEnabled()) { return; }
-        
-        float planeY = restingPosition;
-        Transform draggingObject = transform;
-     
-        Plane plane = new Plane(Vector3.up, Vector3.up * planeY); // ground plane
-     
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-     
-        float distance; // the distance from the ray origin to the ray intersection of the plane
-        if(plane.Raycast(ray, out distance))
-        {
-            rigidbody.useGravity = false;
-            Vector3 clickPosition = ray.GetPoint(distance); // distance along the ray
-            draggingObject.position = new Vector3(clickPosition.x, draggingObject.position.y, clickPosition.z);
-
-            // Handle slopes by shooting ray from gameObject down
-            RaycastHit hit;
-            // Don't adjust height if raycast hit was against another chair (looks janky)
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, clickHeight + 30f, ~chairLayer)) {
-                draggingObject.position += new Vector3(0, clickHeight - hit.distance, 0);
-            }
-        }
-
-        previousLocation = draggingObject.position;
+        Vector3 distance_to_screen = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen.z ));
+        transform.position = new Vector3( pos_move.x - distance.x , transform.position.y, pos_move.z - distance.z );
     }
 
     /// <summary>
@@ -85,6 +50,5 @@ public class Draggable : MonoBehaviour
     void OnMouseUp()
     {
         rigidbody.useGravity = true;
-        restingPosition = transform.position.y;
     }
 }

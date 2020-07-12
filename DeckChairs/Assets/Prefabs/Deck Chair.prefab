@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8365160081162598480}
   - component: {fileID: 8365160081162598481}
   - component: {fileID: 8365160081162598487}
+  - component: {fileID: 824191909}
   m_Layer: 0
   m_Name: Deck Chair
   m_TagString: Chair
@@ -31,7 +32,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519859902173445727}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 1.35, y: -1, z: -1}
   m_LocalScale: {x: 100, y: 99.999985, z: 99.999985}
   m_Children:
@@ -39,7 +40,7 @@ Transform:
   - {fileID: 8365160080261398726}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &5491777681368135290
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -101,7 +102,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!65 &8365160081162598446
 BoxCollider:
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickHeight: 1
   clickLerpTime: 0
+  centerOfMass: {x: 0, y: 0, z: 0}
 --- !u!114 &8365160081162598480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +171,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   symmetryTargets: []
+--- !u!136 &824191909
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519859902173445727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.010479008
+  m_Height: 0.024887532
+  m_Direction: 0
+  m_Center: {x: -0.00022041798, y: 0.00040367732, z: 0.008519589}
 --- !u!1 &8365160080261398721
 GameObject:
   m_ObjectHideFlags: 0

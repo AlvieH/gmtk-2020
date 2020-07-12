@@ -9,6 +9,9 @@ public class Rotateable : MonoBehaviour
     private Quaternion previousRotation;
     private ColorManagement colorManager;
     private bool rotating;
+    private bool dragging;
+    private Rigidbody rigidbody;
+    private RotationController rotationController;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +19,10 @@ public class Rotateable : MonoBehaviour
         transform.rotation = Quaternion.Euler(-90, 0, 0);
         previousRotation = transform.rotation; 
         rotating = false;
+        dragging = false;
         colorManager = FindObjectOfType<ColorManagement>();
+        rotationController = FindObjectOfType<RotationController>();
+        Physics.queriesHitTriggers = true;
     }
 
     // Update is called once per frame
@@ -41,7 +47,11 @@ public class Rotateable : MonoBehaviour
     /// Called every frame while the mouse is over the GUIElement or Collider.
     /// </summary>
     void OnMouseOver()
-    {   
+    {  
+        // Disqualify illegitimate rotations 
+        if (!GameObject.ReferenceEquals(rotationController.GetTarget(), null) &&
+            !GameObject.ReferenceEquals(rotationController.GetTarget(), gameObject) ) { return; }
+
         var scroll = Input.GetAxis("Mouse ScrollWheel");
 
         // User scrolling up
@@ -51,6 +61,7 @@ public class Rotateable : MonoBehaviour
             Debug.Log("Rotated clockwise! Current rotation:" + transform.rotation);
             previousRotation = transform.rotation;
         }
+        // User scrolling down
         else if (scroll < 0 && !rotating) {
             rotating = true;
             transform.Rotate(0, -rotateStep, 0, Space.World);
@@ -65,6 +76,16 @@ public class Rotateable : MonoBehaviour
     // Maintain rotation while being dragged
     void OnMouseDrag()
     {
+        rotationController.SetTarget(gameObject);
         transform.rotation = previousRotation;
+        dragging = true;
+    }
+
+    // Reset RotationController
+    private void OnMouseUp() {
+        if (dragging) {
+            rotationController.NullifyTarget();
+            dragging = false;
+        }
     }
 }
