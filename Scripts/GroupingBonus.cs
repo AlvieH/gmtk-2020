@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GroupingBonus : MonoBehaviour
 {
-    const string CHAIR_COLLIDER_TAG = "ChairGroupingCollider";
+    const string CHAIR_COLLIDER_TAG = "Chair";
 
-    private List<GameObject> symmetryTargets;
+    [SerializeField] private List<GameObject> symmetryTargets;
     private int chairsInGroup;
     private bool symmetry;
 
@@ -21,7 +21,7 @@ public class GroupingBonus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (symmetryTargets.Count > 0) {
+       if (symmetryTargets.Count > 0 && !symmetry) {
            CheckTargetsForSymmetry();
        }
     }
@@ -58,14 +58,18 @@ public class GroupingBonus : MonoBehaviour
     private void CheckTargetsForSymmetry() {
         foreach (GameObject target in symmetryTargets) {
             // Perform check for symmetry
-            float dot = Vector3.Dot(transform.forward, 
-                (target.transform.position - transform.position).normalized);
+            float dot = Vector3.Dot(target.transform.right, 
+                (transform.position - target.transform.position).normalized);
         
             Debug.Log(dot);
         
-            if (dot > 0.8f) {
+            if (dot < -0.8f) {
+                symmetry = true;
                 Debug.Log("Symmetry!");
                 return;
+            }
+            else {
+                symmetry = false;
             }
         }
     }
