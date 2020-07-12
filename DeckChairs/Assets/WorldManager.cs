@@ -14,6 +14,7 @@ public class WorldManager : MonoBehaviour
     public static WorldManager instance = null;
     public GameObject ChairPrefab;
     public GameObject ChairCreationPoint;
+    public GameObject CreationZone;
     [Min(0)]
     public float TotalSeconds;
     public float ElapsedSeconds;
@@ -44,6 +45,14 @@ public class WorldManager : MonoBehaviour
         GameManager.instance.EffectsAudioSource.Stop();
     }
 
+    //public Vector3 RandomPositionForNewChair()
+    //{
+    //    var scale = 100;
+    //    var min = CreationZone.GetComponent<MeshFilter>().mesh.bounds.min;
+    //    var max = CreationZone.GetComponent<MeshFilter>().mesh.bounds.max;
+    //    return CreationZone.transform.position - new Vector3((Random.Range(min.x * scale, max.x * scale)), CreationZone.transform.position.y, -2.49f);
+    //}
+
     void ResetChairs()
     {
         GameObject.FindGameObjectsWithTag("Chair").ToList().ForEach(c => Destroy(c.gameObject));
@@ -65,12 +74,16 @@ public class WorldManager : MonoBehaviour
 
     public void CreateChair()
     {
-        var instance = Instantiate(ChairPrefab, ChairCreationPoint.transform.position, Quaternion.identity);
-        instance.transform.parent = transform;
+        //var pos = RandomPositionForNewChair();
+        //Debug.Log(pos);
+        var instance = Instantiate(ChairPrefab, ChairCreationPoint.transform.position, Quaternion.identity, transform);
+        //instance.transform.parent = transform;
         var newPosition = instance.transform.position;
-        var range = 5;
-        newPosition.x += Random.Range(-range, range);
+        //var range = 10;
+        newPosition.x += Random.Range(-6, 6);
+        newPosition.z += Random.Range(-7, 7);
         GameManager.instance.PlayClip(ChairAddedAudio);
+
         instance.transform.position = newPosition;
     }
 
