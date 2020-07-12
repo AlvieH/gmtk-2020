@@ -6,9 +6,11 @@ public class Timeline : MonoBehaviour
     public GameObject Ship;
     public GameObject TimelineEvents;
     public GameObject TimelineEvent;
+    public GameObject TimelineBackground;
+    public Canvas canvas;
     public Chapter[] Chapters;
 
-    float timelineWidth;
+    float timelineWidth => TimelineBackground.transform.GetComponent<RectTransform>().rect.width * canvas.scaleFactor;
     float shipWidth;
     float progress => WorldManager.instance.ElapsedSeconds / WorldManager.instance.TotalSeconds;
     float initialShipX;
@@ -16,7 +18,6 @@ public class Timeline : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timelineWidth = transform.GetComponent<RectTransform>().sizeDelta.x;
         shipWidth = Ship.GetComponent<RectTransform>().sizeDelta.x;
         initialShipX = Ship.transform.position.x;
     }
@@ -39,7 +40,7 @@ public class Timeline : MonoBehaviour
             var eventPosition = instance.transform.position;
             var eventDistanceFraction = chapter.StartTime / 120;
             // Need to set manually here since it won't be available during edit time
-            timelineWidth = transform.GetComponent<RectTransform>().sizeDelta.x;
+            //timelineWidth = transform.GetComponent<RectTransform>().sizeDelta.x;
             eventPosition.x = Mathf.Lerp(0, timelineWidth, eventDistanceFraction);
             instance.transform.position = eventPosition;
             instance.GetComponent<Image>().sprite = chapter.Icon;
@@ -51,8 +52,8 @@ public class Timeline : MonoBehaviour
     {
         var shipPosition = Ship.transform.position;
         // XXX: hacky
-        var distance = timelineWidth - initialShipX + shipWidth / 1.5f;
-        shipPosition.x = Mathf.Lerp(initialShipX, distance, progress);
+        //var distance = timelineWidth - initialShipX + shipWidth / 1.5f;
+        shipPosition.x = Mathf.Lerp(initialShipX, timelineWidth, progress);
         Ship.transform.position = shipPosition;
     }
 }
