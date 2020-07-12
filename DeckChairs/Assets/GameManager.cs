@@ -28,9 +28,20 @@ public class GameManager : MonoBehaviour
     public AudioSource MusicAudioSource;
     public AudioSource EffectsAudioSource;
 
+    public Texture2D CursorTexture;
+    public Texture2D PickCursorTexture;
+
     public AudioClip MainMusic;
     public AudioClip EndMusic;
     public float MusicFadeDuration;
+
+    public bool IsPickingObject
+    {
+        set
+        {
+            SetCursor(value ? PickCursorTexture : CursorTexture);
+        }
+    }
 
     GameObject[] AllContainers => new GameObject[] {
         PreGameContainer,
@@ -47,6 +58,12 @@ public class GameManager : MonoBehaviour
         MusicAudioSource.clip = MainMusic;
         MusicAudioSource.Play();
         GameState = GameState.PreGame;
+        SetCursor(CursorTexture);
+    }
+
+    public void SetCursor(Texture2D texture)
+    {
+        Cursor.SetCursor(texture, Vector2.zero, CursorMode.ForceSoftware);
     }
 
     public void TransitionToInGame()
@@ -68,6 +85,7 @@ public class GameManager : MonoBehaviour
         MusicAudioSource.clip = EndMusic;
         MusicAudioSource.Play();
         GameState = GameState.PostGame;
+        SetCursor(CursorTexture);
     }
 
     private void Awake()
@@ -86,8 +104,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //TransitionToPreGame();
-        TransitionToInGame();
+        TransitionToPreGame();
+        //TransitionToInGame();
     }
 
     // Update is called once per frame

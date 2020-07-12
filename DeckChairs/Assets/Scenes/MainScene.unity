@@ -4101,6 +4101,7 @@ MonoBehaviour:
   PostGameConatiner: {fileID: 298958487}
   MusicAudioSource: {fileID: 1995031750}
   EffectsAudioSource: {fileID: 1995031749}
+  CursorTexture: {fileID: 2800000, guid: c9c1dbf182c96704288528f9bc8e1269, type: 3}
   MainMusic: {fileID: 8300000, guid: f6812953a55ee3b488ce59b299a0616b, type: 3}
   EndMusic: {fileID: 8300000, guid: 495dcb305c35cf44b99720466e10dabc, type: 3}
   MusicFadeDuration: 1

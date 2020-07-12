@@ -47,7 +47,7 @@ public class PaintPalette : MonoBehaviour
             ColorizeTexture(ColorizedPaintCursorTexture, Colors[SelectedColorIndex]);
             Cursor.SetCursor(ColorizedPaintCursorTexture, Vector2.zero, CursorMode.ForceSoftware);
         }
-        else 
+        else
         {
             Cursor.SetCursor(NormalCursorTexture, Vector2.zero, CursorMode.ForceSoftware);
         }
@@ -76,8 +76,16 @@ public class PaintPalette : MonoBehaviour
 
     void OnCircleClicked(int index)
     {
-        SelectedColorIndex = index;
-        IsActive = true;
+        // Deactivate if clicking on already active color
+        if (IsActive && SelectedColorIndex == index)
+        {
+            IsActive = false;
+        }
+        else
+        {
+            SelectedColorIndex = index;
+            IsActive = true;
+        }
     }
 
     void Update()
