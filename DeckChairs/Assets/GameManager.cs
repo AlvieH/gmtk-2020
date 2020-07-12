@@ -32,28 +32,6 @@ public class GameManager : MonoBehaviour
 
     void HideAllContainers() => AllContainers.ToList().ForEach(x => x.SetActive(false));
 
-    //public GameState GameState
-    //{
-    //    get => GameState;
-    //    set
-    //    {
-    //        var previousState = gameState;
-    //        var nextState = value;
-    //        if (previousState == nextState) return;
-    //        if (previousState == GameState.PreGame && nextState == GameState.InGame)
-    //        {
-    //            TransitionToInGame();
-    //        } else if (previousState == GameState.InGame && nextState == GameState.PostGame)
-    //        {
-    //            TransitionToPostGame();
-    //        }
-    //        else if (previousState == GameState.PostGame && nextState == GameState.PreGame)
-    //        {
-    //            TransitionToPreGame();
-    //        }
-    //    }
-    //}
-
     public void TransitionToPreGame()
     {
         HideAllContainers();
@@ -86,8 +64,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //TransitionToPreGame();
-        TransitionToInGame();
+        TransitionToPreGame();
+        //TransitionToInGame();
     }
 
     // Update is called once per frame
