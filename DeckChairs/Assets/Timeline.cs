@@ -11,15 +11,17 @@ public class Timeline : MonoBehaviour
     float timelineWidth;
     float shipWidth;
     float progress => WorldManager.instance.ElapsedSeconds / WorldManager.instance.TotalSeconds;
+    float initialShipX;
 
     // Start is called before the first frame update
     void Start()
     {
         timelineWidth = transform.GetComponent<RectTransform>().sizeDelta.x;
         shipWidth = Ship.GetComponent<RectTransform>().sizeDelta.x;
+        initialShipX = Ship.transform.position.x;
     }
 
-    [ContextMenu("Create timeline events")]
+    //[ContextMenu("Create timeline events")]
     void CreateTimelineEvents()
     {
         // Remove any timeline events
@@ -48,8 +50,9 @@ public class Timeline : MonoBehaviour
     void Update()
     {
         var shipPosition = Ship.transform.position;
-        var distance = timelineWidth - shipWidth;
-        shipPosition.x = Mathf.Lerp(0, distance, progress);
+        // XXX: hacky
+        var distance = timelineWidth - initialShipX + shipWidth / 1.5f;
+        shipPosition.x = Mathf.Lerp(initialShipX, distance, progress);
         Ship.transform.position = shipPosition;
     }
 }

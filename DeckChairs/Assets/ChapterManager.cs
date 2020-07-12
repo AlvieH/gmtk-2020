@@ -9,6 +9,7 @@ public class ChapterManager : MonoBehaviour
     public Animator Animator;
     public Chapter[] Chapters;
     public HashSet<Chapter> PlayedChapters = new HashSet<Chapter>();
+    public bool SkipVoiceover;
 
     float CurrentTime => WorldManager.instance.ElapsedSeconds;
 
@@ -40,26 +41,39 @@ public class ChapterManager : MonoBehaviour
 
     IEnumerator PlayChapter(Chapter chapter)
     {
-        // Fade music and pause timeline
-        GameManager.instance.FadeOutMusic();
-        Debug.Log($"[ChapterManager] Playing chapter {chapter.name}");
-        WorldManager.instance.IsPaused = true;
+        if (chapter.AnnouncementVoiceover)
+        {
+            // Fade music and pause timeline
+            GameManager.instance.FadeOutMusic();
+            Debug.Log($"[ChapterManager] Playing chapter {chapter.name}");
+            WorldManager.instance.IsPaused = true;
+        }
+
 
         // Play chapter event sound and shake
         GameManager.instance.PlayClip(chapter.EventSound);
+
         if (chapter.PreAnnouncementShakeIntensity != 0)
         {
             WorldManager.instance.Shake(chapter.EventSound.length, chapter.PreAnnouncementShakeIntensity);
         }
         yield return new WaitForSeconds(chapter.EventSound.length - 0.5f);
 
+        if (!chapter.AnnouncementVoiceover)
+        {
+            yield break;
+        }
+
         // Show announcement
         Animator.SetBool("Announcing", true);
         AnnouncementText.text = chapter.AnnouncementText;
-        GameManager.instance.PlayClip(chapter.AnnouncementVoiceover);
 
-        // Wait for announcement to finish
-        yield return new WaitForSeconds(chapter.AnnouncementVoiceover.length);
+        if (!SkipVoiceover)
+        {
+            GameManager.instance.PlayClip(chapter.AnnouncementVoiceover);
+            // Wait for announcement to finish
+            yield return new WaitForSeconds(chapter.AnnouncementVoiceover.length);
+        }
 
         // Play post-announcement sound if needed
         if (chapter.PostAnnouncementSound != null)

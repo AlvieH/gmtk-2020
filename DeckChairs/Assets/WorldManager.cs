@@ -39,6 +39,11 @@ public class WorldManager : MonoBehaviour
         InteractionMode = InteractionMode.Normal;
     }
 
+    public void OnDisable()
+    {
+        GameManager.instance.EffectsAudioSource.Stop();
+    }
+
     void ResetChairs()
     {
         GameObject.FindGameObjectsWithTag("Chair").ToList().ForEach(c => Destroy(c.gameObject));

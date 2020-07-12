@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82a7ad4e1246294899baa84068317b6, type: 3}
   m_Name: 3. Flood
   m_EditorClassIdentifier: 
-  StartTime: 1
+  StartTime: 90
   AnnouncementText: "Hi all, Captain here. The basement is completely flooded, and
     the ship is going down. On your way to the lifeboats, be sure to check out those
     deck chairs, they are spectacular.\r"
