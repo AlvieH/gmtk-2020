@@ -9,5 +9,10 @@ public class Chapter : ScriptableObject
     public string AnnouncementText;
     public AudioClip AnnouncementVoiceover;
     public AudioClip EventSound;
+    public AudioClip PostAnnouncementSound;
+    [Min(0)]
+    public float PreAnnouncementShakeIntensity;
+    [Min(0)]
+    public float PostAnnouncementShakeIntensity;
     public Sprite Icon;
 }

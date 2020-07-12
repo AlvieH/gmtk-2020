@@ -69,10 +69,12 @@ public class WorldManager : MonoBehaviour
         instance.transform.position = newPosition;
     }
 
-    public void Shake(float duration)
+    public void Shake(float duration, float intensityModifier = 1)
     {
-        //Debug.Log(duration);
+        WorldCameraShake.shakeModifier = intensityModifier;
         WorldCameraShake.shakeDuration = duration;
+
+        UICameraShaker.shakeModifier = intensityModifier;
         UICameraShaker.shakeDuration = duration;
     }
 

@@ -26,10 +26,10 @@ public class ChapterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(var chapter in Chapters)
+        foreach (var chapter in Chapters)
         {
             if (PlayedChapters.Contains(chapter)) continue;
-            if (CurrentTime >= chapter.StartTime )
+            if (CurrentTime >= chapter.StartTime)
             {
                 StartCoroutine(PlayChapter(chapter));
                 PlayedChapters.Add(chapter);
@@ -47,16 +47,30 @@ public class ChapterManager : MonoBehaviour
 
         // Play chapter event sound and shake
         GameManager.instance.PlayClip(chapter.EventSound);
-        WorldManager.instance.Shake(chapter.EventSound.length);
+        if (chapter.PreAnnouncementShakeIntensity != 0)
+        {
+            WorldManager.instance.Shake(chapter.EventSound.length, chapter.PreAnnouncementShakeIntensity);
+        }
         yield return new WaitForSeconds(chapter.EventSound.length - 0.5f);
 
         // Show announcement
         Animator.SetBool("Announcing", true);
         AnnouncementText.text = chapter.AnnouncementText;
         GameManager.instance.PlayClip(chapter.AnnouncementVoiceover);
-        
-        // Wait for announcement to finish & resume game
+
+        // Wait for announcement to finish
         yield return new WaitForSeconds(chapter.AnnouncementVoiceover.length);
+
+        // Play post-announcement sound if needed
+        if (chapter.PostAnnouncementSound != null)
+        {
+            GameManager.instance.PlayClip(chapter.PostAnnouncementSound);
+        }
+        if (chapter.PostAnnouncementShakeIntensity != 0)
+        {
+            var remainingTime = WorldManager.instance.TotalSeconds - CurrentTime;
+            WorldManager.instance.Shake(remainingTime, chapter.PostAnnouncementShakeIntensity);
+        }
         WorldManager.instance.IsPaused = false;
         GameManager.instance.FadeInMusic();
         Animator.SetBool("Announcing", false);

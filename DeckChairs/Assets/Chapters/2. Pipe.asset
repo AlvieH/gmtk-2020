@@ -19,4 +19,7 @@ MonoBehaviour:
   AnnouncementVoiceover: {fileID: 8300000, guid: f7a850c4e2ad5674488c654901040b06,
     type: 3}
   EventSound: {fileID: 8300000, guid: 4580de13447440d4db4f0a3f9480a412, type: 3}
+  PostAnnouncementSound: {fileID: 0}
+  PreAnnouncementShakeIntensity: 1
+  PostAnnouncementShakeIntensity: 0.05
   Icon: {fileID: 21300000, guid: ca9026fed445e49458b24ee19dd15e50, type: 3}
