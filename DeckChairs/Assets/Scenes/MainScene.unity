@@ -642,6 +642,8 @@ MonoBehaviour:
   AllAchievements: {fileID: 11400000, guid: 5c4b0f6e745c7ab4e81ed49b4cd8ee85, type: 2}
   AchievementSound: {fileID: 8300000, guid: eec0856ad95ec564f991e51223eec503, type: 3}
   EarnedAchievements: []
+  ChairsMovedCount: 0
+  ChairsRotatedCount: 0
 --- !u!1 &181310574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,7 +2268,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e45a66ae6c827ac41b3590a95dfa85ad, type: 2}
   - {fileID: 11400000, guid: aa936e593ff98a24c9fdb0fbd253a7bd, type: 2}
   - {fileID: 11400000, guid: c7fa7c57277ada94ea1127bc29f520da, type: 2}
-  SkipVoiceover: 1
+  SkipVoiceover: 0
 --- !u!95 &930210233
 Animator:
   serializedVersion: 3
@@ -4102,6 +4104,7 @@ MonoBehaviour:
   MusicAudioSource: {fileID: 1995031750}
   EffectsAudioSource: {fileID: 1995031749}
   CursorTexture: {fileID: 2800000, guid: c9c1dbf182c96704288528f9bc8e1269, type: 3}
+  PickCursorTexture: {fileID: 2800000, guid: e336afeba75d66941b32cae4f5c72ab4, type: 3}
   MainMusic: {fileID: 8300000, guid: f6812953a55ee3b488ce59b299a0616b, type: 3}
   EndMusic: {fileID: 8300000, guid: 495dcb305c35cf44b99720466e10dabc, type: 3}
   MusicFadeDuration: 1

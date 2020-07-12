@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: There can only be one
   description: Build one chair
-  image: {fileID: 0}
   chairCount: 1

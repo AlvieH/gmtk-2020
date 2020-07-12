@@ -10,8 +10,15 @@ public class Paintable : MonoBehaviour
     private Renderer renderer;
     const string colorName = "_Color";
 
+    public bool HasBeenPainted = false;
+
+    public Color ChairColor
+    {
+        get => renderer.material.GetColor(colorName);
+    }
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         colorManager = FindObjectOfType<ColorManagement>();
         renderer = seatCloth.GetComponent<Renderer>();
@@ -24,6 +31,7 @@ public class Paintable : MonoBehaviour
         {
             var currentColor = renderer.material.GetColor(colorName);
             var selectedColor = colorManager.GetPaintColor();
+            HasBeenPainted = true;
             if (currentColor != selectedColor)
             {
                 renderer.material.SetColor(colorName, selectedColor);

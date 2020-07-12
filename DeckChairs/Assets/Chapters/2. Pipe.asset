@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f82a7ad4e1246294899baa84068317b6, type: 3}
   m_Name: 2. Pipe
   m_EditorClassIdentifier: 
-  StartTime: 150
+  StartTime: 60
   AnnouncementText: "Hi everyone, it\u2019s your captain. A pipe has ruptured on
     the lower deck which is rapidly filling up with water, we are working on a solution,
     in the meantime those deck chairs are looking AMAZING. Alright.\r"

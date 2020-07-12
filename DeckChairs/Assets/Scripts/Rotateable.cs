@@ -13,6 +13,8 @@ public class Rotateable : MonoBehaviour
     private Rigidbody rigidbody;
     private RotationController rotationController;
 
+    bool didAnnounceRotation = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,12 @@ public class Rotateable : MonoBehaviour
         }
         else if (scroll == 0) {
             rotating = false;
+        }
+
+        if (rotating && !didAnnounceRotation)
+        {
+            AchievementManager.instance.ChairsRotatedCount += 1;
+            didAnnounceRotation = true;
         }
     }
 

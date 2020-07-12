@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AchievementManager : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class AchievementManager : MonoBehaviour
     public Action<Achievement> OnAchievementEarned;
     public List<Achievement> EarnedAchievements;
 
+    public HashSet<Color> ChairColorsInUse = new HashSet<Color>();
+
+    public int ChairsMovedCount;
+    public int ChairsRotatedCount;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -19,10 +25,25 @@ public class AchievementManager : MonoBehaviour
     public void OnEnable()
     {
         EarnedAchievements = new List<Achievement>();
+        ChairColorsInUse.Clear();
+        ChairsMovedCount = 0;
+        ChairsRotatedCount = 0;
     }
 
     private void Update()
     {
+        // Add all active chair colors to cached chair colors
+        var chairColorsAll = FindObjectsOfType<Paintable>(); ;
+        foreach (var c in chairColorsAll)
+        {
+            if (c.HasBeenPainted)
+            {
+                ChairColorsInUse.Add(c.ChairColor);
+            }
+        }
+        //Debug.Log(FindObjectsOfType<Paintable>().Select(x => x.ChairColor).ToArray());
+        //ChairColorsInUse.UnionWith();
+
         // Check if new achivements have been earned and grant them
         foreach (var achievement in AllAchievements.Items)
         {

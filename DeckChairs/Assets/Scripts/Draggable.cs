@@ -36,6 +36,8 @@ public class Draggable : MonoBehaviour
     {
         if (colorManager.PaintModeEnabled()) return;
 
+        AchievementManager.instance.ChairsMovedCount += 1;
+
         GameManager.instance.IsPickingObject = true;
 
         distance = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(transform.position).z)) - transform.position;
