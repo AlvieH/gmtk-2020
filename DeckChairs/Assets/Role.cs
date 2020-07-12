@@ -6,6 +6,7 @@ public class Role : MonoBehaviour
 {
     public Animator LetterAnimator;
     public Text RoleName;
+    public Text FinalRoleName;
     public string[] RoleNames;
     [Min(1)]
     public int AchievementsPerPromotion;
@@ -26,7 +27,11 @@ public class Role : MonoBehaviour
     public string ShownRole
     {
         get => RoleName.text;
-        set => RoleName.text = value;
+        set
+        {
+            RoleName.text = value;
+            FinalRoleName.text = value;
+        }
     }
 
     private void Start()
