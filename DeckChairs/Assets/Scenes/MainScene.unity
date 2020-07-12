@@ -2668,7 +2668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1038185814
 Transform:
   m_ObjectHideFlags: 0
@@ -3714,6 +3714,7 @@ MonoBehaviour:
   ChairPrefab: {fileID: 519859902173445727, guid: 7ef0b944f0c7747478775dcadce045ba,
     type: 3}
   ChairCreationPoint: {fileID: 1013607277}
+  CreationZone: {fileID: 1038185813}
   TotalSeconds: 120
   ElapsedSeconds: 0
   InteractionMode: 0
