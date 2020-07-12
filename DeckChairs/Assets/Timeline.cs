@@ -28,9 +28,18 @@ public class Timeline : MonoBehaviour
         {
             DestroyImmediate(TimelineEvents.transform.GetChild(i).gameObject);
         }
+
+        // Create new timeline events
         foreach (var chapter in Chapters)
         {
             var instance = Instantiate(TimelineEvent, TimelineEvents.transform);
+            instance.name = $"Timeline Event ({chapter.name})";
+            var eventPosition = instance.transform.position;
+            var eventDistanceFraction = chapter.StartTime / 120;
+            // Need to set manually here since it won't be available during edit time
+            timelineWidth = transform.GetComponent<RectTransform>().sizeDelta.x;
+            eventPosition.x = Mathf.Lerp(0, timelineWidth, eventDistanceFraction);
+            instance.transform.position = eventPosition;
             instance.GetComponent<Image>().sprite = chapter.Icon;
         }
     }

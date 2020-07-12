@@ -19,6 +19,8 @@ public class WorldManager : MonoBehaviour
     public float ElapsedSeconds;
     public InteractionMode InteractionMode;
 
+    public bool IsPaused;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -33,13 +35,14 @@ public class WorldManager : MonoBehaviour
 
     void ResetChairs()
     {
-        //Debug.Log("[WorldManager] destroying chairs!");
         GameObject.FindGameObjectsWithTag("Chair").ToList().ForEach(c => Destroy(c.gameObject));
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Paused during chapter announcements
+        if (IsPaused) return;
+
         ElapsedSeconds += Time.deltaTime;
 
         if (ElapsedSeconds >= TotalSeconds)

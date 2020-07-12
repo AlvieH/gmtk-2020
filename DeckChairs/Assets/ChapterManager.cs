@@ -41,11 +41,13 @@ public class ChapterManager : MonoBehaviour
     IEnumerator PlayChapter(Chapter chapter)
     {
         GameManager.instance.FadeOutMusic();
+        WorldManager.instance.IsPaused = true;
         Debug.Log($"[ChapterManager] Playing chapter {chapter.name}");
         Animator.SetBool("Announcing", true);
         AnnouncementText.text = chapter.AnnouncementText;
         GameManager.instance.PlayClip(chapter.AnnouncementVoiceover);
         yield return new WaitForSeconds(chapter.AnnouncementVoiceover.length);
+        WorldManager.instance.IsPaused = false;
         GameManager.instance.FadeInMusic();
         Animator.SetBool("Announcing", false);
     }
