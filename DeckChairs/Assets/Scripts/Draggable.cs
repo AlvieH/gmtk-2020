@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ public class Draggable : MonoBehaviour
 
     [SerializeField] float clickHeight;
     [SerializeField] float clickLerpTime;
+    [SerializeField] Vector3 centerOfMass;
     
 
     private Rigidbody rigidbody;
@@ -27,6 +28,7 @@ public class Draggable : MonoBehaviour
         restingPosition = 0f;
         chairLayer = LayerMask.GetMask(CHAIR_TAG);
         colorManager = FindObjectOfType<ColorManagement>();
+        rigidbody.centerOfMass = centerOfMass;
     }
 
     /// <summary>
