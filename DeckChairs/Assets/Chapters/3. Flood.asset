@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82a7ad4e1246294899baa84068317b6, type: 3}
+  m_Name: 3. Flood
+  m_EditorClassIdentifier: 
+  StartTime: 90
+  AnnouncementText: "Hi all, Captain here. So the basement is completely flooded,
+    and the ship is going down. On your way to the lifeboats, be sure to check out
+    the deck chairs, they\u2019re spectacular.\r"
+  AnnouncementVoiceover: {fileID: 8300000, guid: 31923c132393f6040ae4d02b44fb87a4,
+    type: 3}

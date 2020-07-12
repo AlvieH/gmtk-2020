@@ -7,6 +7,7 @@ public class AchievementManager : MonoBehaviour
     public static AchievementManager instance = null;
     public AchievementCard AchievementCard;
     public AchievementSet AllAchievements;
+    public AudioClip AchievementSound;
     public Action<Achievement> OnAchievementEarned;
     public List<Achievement> EarnedAchievements;
 
@@ -41,6 +42,7 @@ public class AchievementManager : MonoBehaviour
         Debug.Log($"[AchievementManager] Celebrating achievement {achievement.title}");
         //int cardsOnScreen = GameObject.FindObjectsOfType<AchievementCard>().Length;
         var instance = Instantiate(AchievementCard, transform);
+        GameManager.instance.PlayClip(AchievementSound);
         //instance.transform.SetParent();
         //var position = instance.transform.position;
         //position.y = cardsOnScreen * instance.GetComponent<RectTransform>().sizeDelta.y;

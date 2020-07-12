@@ -1,0 +1,23 @@
+On game start -- background.mp3
+On achievement -- achievement.wav
+On chair picked up -- pop.mp3
+On promotion -- promotion.mp3
+On chair painted -- painted.wav
+
+30 seconds
+At 30 seconds (w/ shake) -- iceberghit.wav
+On 1st announcement -- announcement1.wav
+
+1:00
+At 1:00 (w/ shake) -- pipeburst.wav
+On 2nd announcement -- announcement2.wav
+
+1:30
+At 1:30 (w/ shake) -- flood.wav
+On 3rd announcement -- announcement3.wav
+After 3rd announcement -- crowdnoise.wav
+
+2:00
+At 2:00 (w/ huge shake) -- sink.wav
+
+On end screen -- end.mp3

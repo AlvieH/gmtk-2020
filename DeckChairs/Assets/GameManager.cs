@@ -61,6 +61,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayClip(AudioClip clip)
+    {
+        GetComponent<AudioSource>().PlayOneShot(clip);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
