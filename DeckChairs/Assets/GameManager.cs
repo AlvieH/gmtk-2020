@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
 
     public AudioSource MusicAudioSource;
     public AudioSource EffectsAudioSource;
+
+    public AudioClip MainMusic;
+    public AudioClip EndMusic;
     public float MusicFadeDuration;
 
     GameObject[] AllContainers => new GameObject[] {
@@ -41,11 +44,18 @@ public class GameManager : MonoBehaviour
     {
         HideAllContainers();
         PreGameContainer.SetActive(true);
+        MusicAudioSource.clip = MainMusic;
+        MusicAudioSource.Play();
         GameState = GameState.PreGame;
     }
 
     public void TransitionToInGame()
     {
+        if (MusicAudioSource.clip != MainMusic)
+        {
+            MusicAudioSource.clip = MainMusic;
+            MusicAudioSource.Play();
+        }
         HideAllContainers();
         InGameContainer.SetActive(true);
         GameState = GameState.InGame;
@@ -55,6 +65,8 @@ public class GameManager : MonoBehaviour
     {
         HideAllContainers();
         PostGameConatiner.SetActive(true);
+        MusicAudioSource.clip = EndMusic;
+        MusicAudioSource.Play();
         GameState = GameState.PostGame;
     }
 
