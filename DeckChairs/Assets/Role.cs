@@ -9,6 +9,7 @@ public class Role : MonoBehaviour
     public string[] RoleNames;
     [Min(1)]
     public int AchievementsPerPromotion;
+    public AudioClip PromotionSound;
 
     int AchievementCount => AchievementManager.instance.EarnedAchievements.Count;
 
@@ -55,5 +56,6 @@ public class Role : MonoBehaviour
     public void Promote()
     {
         LetterAnimator.SetTrigger("Enter");
+        GameManager.instance.PlayClip(PromotionSound);
     }
 }

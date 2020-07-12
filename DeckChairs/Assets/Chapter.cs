@@ -8,5 +8,6 @@ public class Chapter : ScriptableObject
     [TextArea]
     public string AnnouncementText;
     public AudioClip AnnouncementVoiceover;
+    public AudioClip EventSound;
     public Sprite Icon;
 }

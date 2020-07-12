@@ -18,6 +18,12 @@ public class WorldManager : MonoBehaviour
     public float TotalSeconds;
     public float ElapsedSeconds;
     public InteractionMode InteractionMode;
+    public AudioClip ChairAddedAudio;
+    public AudioClip ChairPickedUpAudio;
+    public AudioClip ChairPaintedAudio;
+
+    public CameraShake UICameraShaker;
+    public CameraShake WorldCameraShake;
 
     public bool IsPaused;
 
@@ -57,10 +63,26 @@ public class WorldManager : MonoBehaviour
         var instance = Instantiate(ChairPrefab, ChairCreationPoint.transform.position, Quaternion.identity);
         instance.transform.parent = transform;
         var newPosition = instance.transform.position;
-        var range = 3;
+        var range = 5;
         newPosition.x += Random.Range(-range, range);
-        //newPosition.y += Random.Range(-range, range);
-        //newPosition.z += Random.Range(-range, range);
+        GameManager.instance.PlayClip(ChairAddedAudio);
         instance.transform.position = newPosition;
+    }
+
+    public void Shake(float duration)
+    {
+        //Debug.Log(duration);
+        WorldCameraShake.shakeDuration = duration;
+        UICameraShaker.shakeDuration = duration;
+    }
+
+    public void OnChairPainted()
+    {
+        GameManager.instance.PlayClip(ChairPaintedAudio);
+    }
+
+    public void OnChairPickedUp()
+    {
+        //GameManager.instance.PlayClip(ChairPickedUpAudio);
     }
 }

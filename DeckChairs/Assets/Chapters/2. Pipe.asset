@@ -15,7 +15,8 @@ MonoBehaviour:
   StartTime: 60
   AnnouncementText: "Hi everyone, it\u2019s your captain. A pipe has ruptured on
     the lower deck which is rapidly filling up with water, we are working on a solution,
-    in the meantime the deck chairs are looking AMAZING. Alright.\r\n"
+    in the meantime those deck chairs are looking AMAZING. Alright.\r"
   AnnouncementVoiceover: {fileID: 8300000, guid: f7a850c4e2ad5674488c654901040b06,
     type: 3}
+  EventSound: {fileID: 8300000, guid: 4580de13447440d4db4f0a3f9480a412, type: 3}
   Icon: {fileID: 21300000, guid: ca9026fed445e49458b24ee19dd15e50, type: 3}

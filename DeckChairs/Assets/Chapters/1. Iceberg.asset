@@ -18,4 +18,5 @@ MonoBehaviour:
     what you\u2019re doing, and those deck chairs are lookin\u2019 great. \r"
   AnnouncementVoiceover: {fileID: 8300000, guid: af4ab20da0331c241a7157d76a1034f8,
     type: 3}
+  EventSound: {fileID: 8300000, guid: a896fba1dacce5645857dc228b4da3f5, type: 3}
   Icon: {fileID: 21300000, guid: e49cc9089c1bd454d91cfd103a022ed9, type: 3}

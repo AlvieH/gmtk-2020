@@ -9,7 +9,7 @@ public class Draggable : MonoBehaviour
     [SerializeField] float clickHeight;
     [SerializeField] float clickLerpTime;
     [SerializeField] Vector3 centerOfMass;
-    
+
 
     private Rigidbody rigidbody;
     private ColorManagement colorManager;
@@ -34,14 +34,19 @@ public class Draggable : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (colorManager.PaintModeEnabled()) return;
+
         distance = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.WorldToScreenPoint(transform.position).z)) - transform.position;
+        WorldManager.instance.OnChairPickedUp();
     }
- 
+
     void OnMouseDrag()
     {
+        if (colorManager.PaintModeEnabled()) return;
+
         Vector3 distance_to_screen = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen.z ));
-        transform.position = new Vector3( pos_move.x - distance.x , transform.position.y, pos_move.z - distance.z );
+        Vector3 pos_move = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen.z));
+        transform.position = new Vector3(pos_move.x - distance.x, transform.position.y, pos_move.z - distance.z);
     }
 
     /// <summary>

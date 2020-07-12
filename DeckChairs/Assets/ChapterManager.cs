@@ -40,12 +40,22 @@ public class ChapterManager : MonoBehaviour
 
     IEnumerator PlayChapter(Chapter chapter)
     {
+        // Fade music and pause timeline
         GameManager.instance.FadeOutMusic();
-        WorldManager.instance.IsPaused = true;
         Debug.Log($"[ChapterManager] Playing chapter {chapter.name}");
+        WorldManager.instance.IsPaused = true;
+
+        // Play chapter event sound and shake
+        GameManager.instance.PlayClip(chapter.EventSound);
+        WorldManager.instance.Shake(chapter.EventSound.length);
+        yield return new WaitForSeconds(chapter.EventSound.length - 0.5f);
+
+        // Show announcement
         Animator.SetBool("Announcing", true);
         AnnouncementText.text = chapter.AnnouncementText;
         GameManager.instance.PlayClip(chapter.AnnouncementVoiceover);
+        
+        // Wait for announcement to finish & resume game
         yield return new WaitForSeconds(chapter.AnnouncementVoiceover.length);
         WorldManager.instance.IsPaused = false;
         GameManager.instance.FadeInMusic();
